@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #products {
+            flex: 1;
+            padding-right: 20px; /* เพิ่มระยะห่างด้านขวา */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .product {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .add-to-cart{
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            background-color: aquamarine;
+        }
+
+        .remove-from-cart {
+            background-color: #d0f273; /* เปลี่ยนสีพื้นหลัง */
+            color: white; /* เปลี่ยนสีข้อความ */
+            border: none; /* ลบเส้นขอบ */
+            padding: 10px 20px; /* เพิ่มขนาดการระยะห่าง */
+            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นรูปของเครื่องมือ */
+            border-radius: 5px; /* เพิ่มเส้นรอบๆ */
+        }
+
+        #cart {
+            width: 200px; /* กำหนดความกว้างของตะกร้า */
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #cart-items {
+            margin-bottom: 10px;
+        }
+         /* ตกแต่งสไตล์ของปุ่ม Clear Cart */
+        #clear-cart {
+            background-color: #ff6347; /* เปลี่ยนสีพื้นหลัง */
+            color: white; /* เปลี่ยนสีข้อความ */
+            border: none; /* ลบเส้นขอบ */
+            padding: 10px 20px; /* เพิ่มขนาดการระยะห่าง */
+            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นรูปของเครื่องมือ */
+            border-radius: 5px; /* เพิ่มเส้นรอบๆ */
+        }
+
+        /* เมื่อเมาส์ชี้ไปที่ปุ่ม Clear Cart */
+        #clear-cart:hover {
+            background-color: #ff7f50; /* เปลี่ยนสีพื้นหลังเมื่อชี้ */
+        }
+
+        /* เมื่อกดปุ่ม Clear Cart */
+        #clear-cart:active {
+            background-color: #ff4500; /* เปลี่ยนสีพื้นหลังเมื่อกด */
+        }
+    </style>
+</head>
+<body>
+    <div id="products">
+     <div class="product">
+            <h3>Product 1 - $10</h3>
+            <img src="berger.jpg" alt="Product 1" width="100"> <p>Merder</p>
+            <button class="add-to-cart" data-product-id="1" data-price="10">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 2 - $20</h3>
+            <img src="pig.jpg" alt="Product 2" width="100"> <p>Pig</p>
+            <button class="add-to-cart" data-product-id="2" data-price="20">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 3 - $25</h3>
+            <img src="coke.png" alt="Product 3" width="100"> <p>Coke</p>
+            <button class="add-to-cart" data-product-id="3" data-price="25">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 4 - $15</h3>
+            <img src="rice.jpg" alt="Product 4" width="100"> <p>Rice</p>
+            <button class="add-to-cart" data-product-id="4" data-price="15">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 5 - $200</h3>
+            <img src="gn.jpg" alt="Product 4" width="100"> <p>ตู้เย็น</p>
+            <button class="add-to-cart" data-product-id="5" data-price="200">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 6 - $150,000</h3>
+            <img src="ferari.jpg" alt="Product 4" width="100"> <p>ferrari</p>
+            <button class="add-to-cart" data-product-id="6" data-price="150000">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 7 - $2</h3>
+            <img src="glass.jpg" alt="Product 4" width="100"> <p>ferrari</p>
+            <button class="add-to-cart" data-product-id="7" data-price="12">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 8 - $160</h3>
+            <img src="smart.jpg" alt="Product 4" width="100"> <p>Phone</p>
+            <button class="add-to-cart" data-product-id="8" data-price="160">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 9 - $100</h3>
+            <img src="camera.jpg" alt="Product 4" width="100"> <p>camera</p>
+            <button class="add-to-cart" data-product-id="9" data-price="100">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Product 10 - $30</h3>
+            <img src="light.jpg" alt="Product 4" width="100"> <p>light</p>
+            <button class="add-to-cart" data-product-id="10" data-price="30">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="cart">
+        <h2>Cart</h2>
+        <div id="cart-items">
+            <p>No items in cart.</p>
+        </div>
+        <p id="total">Total: $0.00</p>
+        <button id="clear-cart">Clear Cart</button>
+        <button id="print-cart">Print Cart as PDF</button>
+
+
+    </div>
+   
+
+
+    <script src="cart.js"></script>
+</body>
+</html>
+
+
+
