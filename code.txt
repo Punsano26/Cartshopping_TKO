@@ -1,0 +1,42 @@
+<div class="col-md-5">
+            <div class="card">
+              <img src="food1.jpg" class="card-img-top" alt="เสื้อที่ 1">
+              <div class="card-body">
+                <h2 class="card-title">ไส้กรอกปิ้ง</h2>
+                <p class="card-text">ราคา: <span class="price">500 บาท</span></p>
+                <button class="btn btn-primary add-to-cart" data-product-id="1" data-price="500">เพิ่มลงตะกร้า</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <img src="food2.jpg" class="card-img-top" alt="เสื้อที่ 2">
+              <div class="card-body">
+                <h2 class="card-title">เนื้อย่าง</h2>
+                <p class="card-text">ราคา: <span class="price">700 บาท</span></p>
+                <button class="btn btn-primary add-to-cart" data-product-id="2" data-price="700">เพิ่มลงตะกร้า</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="card">
+              <img src="food3.jpg" class="card-img-top" alt="เสื้อที่ 2">
+              <div class="card-body">
+                <h2 class="card-title">สปาเก็ตตี้</h2>
+                <p class="card-text">ราคา: <span class="price">700 บาท</span></p>
+                <button class="btn btn-primary add-to-cart" data-product-id="3" data-price="700">เพิ่มลงตะกร้า</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="card">
+              <img src="food4.jpg" class="card-img-top" alt="เสื้อที่ 2">
+              <div class="card-body">
+                <h2 class="card-title">เต้าหู้เผ็ด</h2>
+                <p class="card-text">ราคา: <span class="price">700 บาท</span></p>
+                <button class="btn btn-primary add-to-cart" data-product-id="4" data-price="700">เพิ่มลงตะกร้า</button>
+              </div>
+            </div>
+          </div>
