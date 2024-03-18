@@ -114,19 +114,25 @@ function getProductMenu(productId) {
     case "4":
       return "ข้าวผัด";
     case "5":
-      return "ข้าวคลุกทะเลต้มยำ"
+      return "ข้าวคลุกทะเลต้มยำ";
       case "6":
-        return "ข้าวผัดคะน้าทะเล"
+        return "ข้าวผัดคะน้าทะเล";
         case "7":
-      return "ข้าวผัดคะน้าหมูกรอบ"
+      return "ข้าวผัดคะน้าหมูกรอบ";
       case "8":
-      return "ข้าวหมูกระเทียม"
+      return "ข้าวหมูกระเทียม";
       case "9":
-      return "น้ำกระเจี๊ยบ"
+      return "น้ำกระเจี๊ยบ";
       case "10":
-        return "น้ำเก๊กฮวย"
+        return "น้ำเก๊กฮวย";
         case "11":
-          return "น้ำชาเขียวมะลิ"
+          return "น้ำชาเขียวมะลิ";
+        case "12":
+          return "ผัดเต้าหู้อ่อนทรงเครื่อง"
+        case "13":
+          return "ยำหมูยอ"
+        case "14":
+          return "น้ำเต้าหู้ทรงเครื่อง"
     default:
       return "Unknown Menu";
   }
@@ -135,6 +141,13 @@ function getProductMenu(productId) {
 
 document.getElementById("printCart").addEventListener("click", () => {
   printReceipt("Cart Receipt", generateCartReceipt());
+  // แสดง SweetAlert เมื่อทำการพิมพ์ใบเสร็จเรียบร้อยแล้ว
+  Swal.fire({
+    icon: "success",
+    title: "บิลเสร็จของคุณถูกพิมพ์แล้ว",
+    showConfirmButton: false,
+    timer: 1500
+  });
 });
 
 function printReceipt(title, content) {
@@ -269,11 +282,6 @@ function generateCartReceipt() {
 
   
 }
-
-
-
-
-
 
 
 
