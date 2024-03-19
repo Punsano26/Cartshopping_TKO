@@ -1,3 +1,4 @@
+// สำหรับเพิ่มสินค้าลงในตะกร้าของลูกค้าเมื่อมีการคลิกที่ปุ่ม "Add to Cart"
 const cart = {};
 
 document.querySelectorAll(".add-to-cart").forEach((button) => {
@@ -60,7 +61,8 @@ function updateCartDisplay() {
     const totalCell = document.createElement("td");
     totalCell.textContent = `฿${itemTotalPrice}`;
     tr.appendChild(totalCell);
-
+    
+    //ปุ่มลบ
     const actionsCell = document.createElement("td");
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
@@ -72,6 +74,7 @@ function updateCartDisplay() {
     });
     actionsCell.appendChild(deleteButton);
 
+    //ปุ่มลดจำนวน
     const reduceButton = document.createElement("button");
     reduceButton.textContent = "Reduce";
     reduceButton.classList.add("btn", "btn-secondary", "reduce-quantity");
@@ -158,7 +161,7 @@ function printReceipt(title, content) {
   printWindow.document.close();
   printWindow.print();
 }
-
+//รูปแบบตาราง จัดเรียงตาราง
 function generateCartReceipt() {
   let receiptContent = `
   <style>
@@ -215,7 +218,7 @@ function generateCartReceipt() {
   for (const productId in cart) {
     const item = cart[productId];
     const itemTotalPrice = item.quantity * item.price;
-
+// เรียกส่วนที่จะนำมาโชว์บนหน้าเว็บ
     receiptContent += `
       <tr>
         <td>Product ${productName}</td>
@@ -235,7 +238,7 @@ function generateCartReceipt() {
   return receiptContent;
 }
 
-
+//โชว์หัวตาราง
 function generateCartReceipt() {
   let receiptContent = `
   <style>
