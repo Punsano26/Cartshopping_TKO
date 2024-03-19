@@ -13,7 +13,7 @@ document.querySelectorAll(".add-to-cart").forEach((button) => {
     updateCartDisplay();
   });
 });
-
+// นับราคารวมในตะกร้าสินค้าโดยเริ่มต้นจาก 0
 function updateCartDisplay() {
   const cartElement = document.getElementById("cart");
   cartElement.innerHTML = "";
@@ -61,7 +61,7 @@ function updateCartDisplay() {
     const totalCell = document.createElement("td");
     totalCell.textContent = `฿${itemTotalPrice}`;
     tr.appendChild(totalCell);
-    
+
     //ปุ่มลบ
     const actionsCell = document.createElement("td");
     const deleteButton = document.createElement("button");
@@ -166,11 +166,11 @@ function generateCartReceipt() {
   let receiptContent = `
   <style>
   @page {
-    size: 80mm 80mm;
+    size: 100mm 100mm;
   }
   body {
-    width: 80mm;
-    height: 80mm;
+    width: 100mm;
+    height: 100mm;
     margin: 0;
     padding: 10px;
     font-family: Arial, sans-serif;
@@ -225,6 +225,7 @@ function generateCartReceipt() {
         <td>${item.quantity}</td>
         <td>$${item.price}</td>
         <td>$${itemTotalPrice}</td>
+       
       </tr>`;
 
     totalPrice += itemTotalPrice;
@@ -233,6 +234,7 @@ function generateCartReceipt() {
   receiptContent += `
       </tbody>
     </table>
+    
     <p>Total Price: ${totalPrice} บาท</p>`;
 
   return receiptContent;
@@ -271,6 +273,7 @@ function generateCartReceipt() {
         <td>${item.quantity}</td>
         <td>฿${item.price}</td>
         <td>฿${itemTotalPrice}</td>
+         
       </tr>`;
 
     totalPrice += itemTotalPrice;
@@ -279,7 +282,10 @@ function generateCartReceipt() {
   receiptContent += `
     </tbody>
   </table>
-  <p>Total Price: ${totalPrice} บาท</p>`;
+  <p>Total Price: ${totalPrice} บาท</p> 
+  <p>เบอร์โทรร้าน :08656986325</p>
+  <p>หุ้นส่วนรายใหญ่ : นายพันแสน สมกล้า</p>
+  <p>เบอรโทรลูกจ้าง : 0236549754</p>`;
 
   return receiptContent;
 
