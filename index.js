@@ -265,6 +265,7 @@ function generateCartReceipt() {
     const itemTotalPrice = item.quantity * item.price;
 
     // Get the name of the product using getProductMenu function
+    //ฟังก์ชันนี้ตอนผมสั่ง ผมสั่งให้มันรียกชื่อเมนูจาก ไอดี
     const productName = getProductMenu(productId);
 
     receiptContent += `
