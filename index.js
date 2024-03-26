@@ -143,13 +143,14 @@ function getProductMenu(productId) {
 
 
 document.getElementById("printCart").addEventListener("click", () => {
-  printReceipt("Cart Receipt", generateCartReceipt());
+  const customerName = prompt("Please enter your name:");
+  printReceipt("Cart Receipt", generateCartReceipt(customerName));
   // แสดง SweetAlert เมื่อทำการพิมพ์ใบเสร็จเรียบร้อยแล้ว
   Swal.fire({
     icon: "success",
     title: "บิลเสร็จของคุณถูกพิมพ์แล้ว",
     showConfirmButton: false,
-    timer: 1500
+    timer: 1500,
   });
 });
 
@@ -241,13 +242,14 @@ function generateCartReceipt() {
 }
 
 //โชว์หัวตาราง
-function generateCartReceipt() {
+function generateCartReceipt(customerName) {
   let receiptContent = `
   <style>
     /* Your existing CSS for receipt styling */
   </style>
 
   <h2>Cart Receipt</h2>
+  <p>ชื่อของลูก: ${customerName}</p>
   <table>
     <thead>
       <tr>
@@ -265,7 +267,6 @@ function generateCartReceipt() {
     const itemTotalPrice = item.quantity * item.price;
 
     // Get the name of the product using getProductMenu function
-    //ฟังก์ชันนี้ตอนผมสั่ง ผมสั่งให้มันรียกชื่อเมนูจาก ไอดี
     const productName = getProductMenu(productId);
 
     receiptContent += `
@@ -274,7 +275,6 @@ function generateCartReceipt() {
         <td>${item.quantity}</td>
         <td>฿${item.price}</td>
         <td>฿${itemTotalPrice}</td>
-         
       </tr>`;
 
     totalPrice += itemTotalPrice;
@@ -283,15 +283,23 @@ function generateCartReceipt() {
   receiptContent += `
     </tbody>
   </table>
-  <p>Total Price: ${totalPrice} บาท</p> 
-  <p>เบอร์โทรร้าน :08656986325</p>
+  <p>Total Price: ${totalPrice} บาท</p>
+  <p>เบอร์โทรร้าน : 08656986325</p>
   <p>หุ้นส่วนรายใหญ่ : นายพันแสน สมกล้า</p>
   <p>เบอรโทรลูกจ้าง : 0236549754</p>`;
 
   return receiptContent;
-
-  
 }
 
+function promptCustomerName() {
+  const customerName = prompt("Please enter your name:");
+  if (customerName) {
+    printReceipt("Cart Receipt", generateCartReceipt(customerName));
+  }
+}
+
+document.getElementById("printCart").addEventListener("click", () => {
+  promptCustomerName();
+});
 
 
